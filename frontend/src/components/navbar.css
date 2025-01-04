@@ -1,0 +1,114 @@
+/* Navbar container */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(45deg, #1e3c72, #2a5298);
+    padding: 10px 20px;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    position: relative;
+    z-index: 1000;
+  }
+  
+  /* Logo styling */
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .logo h2 a{
+    color: #f3f3f3;
+    text-decoration: none;
+  }
+  
+  /* Navbar links */
+  .nav-links {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    list-style: none;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .link {
+    text-decoration: none;
+    color: #f3f3f3;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .link:hover {
+    color: #ffbf00;
+    transform: scale(1.1);
+  }
+  
+  .link:active {
+    color: black;
+    background: #ffbf00;
+    border-radius: 5px;
+  }
+  
+  /* Hamburger menu icon */
+  .menu-icon {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+  }
+  
+  .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Active hamburger menu */
+  .menu-icon.open .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  
+  .menu-icon.open .bar:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .menu-icon.open .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+  
+  /* Responsive navbar */
+  @media (max-width: 768px) {
+    .nav-links {
+      position: absolute;
+      top: 80px;
+      right: 0;
+      flex-direction: column;
+      background: #1e3c72;
+      width: 100%;
+      gap: 10px;
+      padding: 15px 0;
+      display: none;
+    }
+
+    @keyframes nav-anim {
+      from{
+        transform: translateX(100%);
+      }
+      to{
+        transform: translateX(0);
+      }
+    }
+  
+    .nav-links.show {
+      display: block;
+      animation: nav-anim 0.5s 1 ease;
+    }
+  
+    .menu-icon {
+      display: flex;
+    }
+  }
+  
