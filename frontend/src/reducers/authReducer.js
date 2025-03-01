@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, LOGIN_FAIL } from '../actions/types';
+import { LOGIN_SUCCESS, LOGIN_FAIL, LOG_OUT } from '../actions/types';
 
 const initialState = {
   token: localStorage.getItem('token'),
@@ -28,7 +28,7 @@ export default function authReducer(state = initialState, action) {
         loading: false,
         user: null,
       };
-    case LOGOUT:
+    case LOG_OUT:
       localStorage.removeItem('token');
       return {
         ...state,

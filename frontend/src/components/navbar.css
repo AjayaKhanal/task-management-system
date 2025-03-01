@@ -1,19 +1,36 @@
+/* Default Light Theme */
+body {
+  background-color: #ffffff;
+  color: #000000;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Dark Theme */
+body.dark-theme {
+  background-color: #121212;
+  color: #ffffff;
+}
+
 /* Navbar container */
 .nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: linear-gradient(45deg, #1e3c72, #2a5298);
-    padding: 10px 20px;
+    /* padding: 10px 20px; */
     color: white;
     font-family: 'Arial', sans-serif;
     position: relative;
     z-index: 1000;
   }
   
+  body.dark-theme .nav {
+    background:  #333333;
+  }
+
   /* Logo styling */
   .logo {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
   }
@@ -39,7 +56,7 @@
     padding: 5px 10px;
     transition: all 0.3s ease;
   }
-  
+
   .link:hover {
     color: #ffbf00;
     transform: scale(1.1);
@@ -78,22 +95,27 @@
   .menu-icon.open .bar:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
   }
-  
+
   /* Responsive navbar */
   @media (max-width: 768px) {
     .nav-links {
       position: absolute;
-      top: 80px;
+      top: 50px;
       right: 0;
       flex-direction: column;
       background: #1e3c72;
       width: 100%;
       gap: 10px;
       padding: 15px 0;
-      display: none;
+      max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+      visibility: hidden;
+      transform: translateX(100%);
+      transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
     }
 
-    @keyframes nav-anim {
+    /* @keyframes nav-anim {
       from{
         transform: translateX(100%);
       }
@@ -101,10 +123,38 @@
         transform: translateX(0);
       }
     }
+
+    @keyframes anti-nav-anim {
+      from{
+        transform: translateX(0);
+      }
+      to{
+        transform: translateX(100%);
+      }
+    } */
   
     .nav-links.show {
-      display: block;
-      animation: nav-anim 0.5s 1 ease;
+      max-height: 500px;
+      opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+      /* animation: nav-anim 0.5s 1 ease-in-out; */
+    }
+
+    body.dark-theme .nav-links.show{
+      background:  #444444;
+    }
+
+    .nav-links.hide {
+      max-height: 0;
+      opacity: 0;
+    visibility: hidden;
+    transform: translateX(100%);
+      /* animation: anti-nav-anim 0.5s 1 ease-in-out; */
+    }
+
+    body.dark-theme .nav-links.hide{
+      background:  #444444;
     }
   
     .menu-icon {
